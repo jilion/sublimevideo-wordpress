@@ -1,0 +1,144 @@
+#sv_settings {
+  max-width:960px;
+  min-width:580px;
+  padding:30px;
+  background:#e1e6f0;
+/*  margin:16px 0 0 14px;*/
+  margin:30px 30px 16px 10px;
+  border: 1px solid #9daece;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  -moz-box-shadow: inset rgba(255,255,255,0.8) 0 1px 0;
+  -webkit-box-shadow: inset rgba(255,255,255,0.8) 0 1px 0;
+  box-shadow: inset rgba(255,255,255,0.8) 0 1px 0;
+}
+
+#sv_settings * {
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  text-shadow:rgba(255,255,255,0.9) 0 1px 0;
+  color:#545e75;
+}
+
+#sv_settings h2.logo {
+  width:234px;
+  height:32px;
+  background:url(../../assets/img/sublimevideo_logo.png) no-repeat;
+  margin:10px 0 20px;
+}
+
+#sv_settings h2.logo span {display:none}
+
+#sv_settings h3 {
+  font-size:14px;
+}
+
+#sv_settings input[type=text] {
+  padding:0 4px;
+  margin:0;
+  height:27px;
+  line-height:26px;
+  font-family:inherit;
+  font-weight:bold;
+  font-size:13px;
+  color:#545e75;
+  border:1px solid #9ea7bb;
+  text-align:left;
+  -moz-border-radius:4px;
+  -webkit-border-radius:4px;
+  border-radius:4px;
+  -moz-box-shadow: inset rgba(0,0,0,0.2) 0 1px 10px, rgba(255,255,255,0.8) 0 1px 0;
+  -webkit-box-shadow: inset rgba(0,0,0,0.2) 0 1px 10px, rgba(255,255,255,0.8) 0 1px 0;
+  box-shadow: inset rgba(0,0,0,0.2) 0 1px 10px, rgba(255,255,255,0.8) 0 1px 0;
+}
+
+#sv_settings p.submit {
+  padding:0;
+}
+
+#sv_settings p.submit input, #sv_settings p.submit a.button {
+  margin:10px 0;
+  color:#fff;
+  text-shadow:rgba(0,0,0,0.8) 0 -1px 0;
+  font-size:14px !important;
+  font-weight:normal;
+  padding:10px 14px 11px;
+  border:1px solid #0b439e;
+  background: #1ba2eb;
+  background: -moz-linear-gradient(top, #1ba2eb 0%, #0a3ec9 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1ba2eb), color-stop(100%,#0a3ec9));
+  background: -webkit-linear-gradient(top, #1ba2eb 0%,#0a3ec9 100%);
+  background: -o-linear-gradient(top, #1ba2eb 0%,#0a3ec9 100%);
+  background: -ms-linear-gradient(top, #1ba2eb 0%,#0a3ec9 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1ba2eb', endColorstr='#0a3ec9',GradientType=0 );
+  background: linear-gradient(top, #1ba2eb 0%,#0a3ec9 100%);
+  -moz-border-radius:6px;
+  -webkit-border-radius:6px;
+  border-radius:6px;
+  -moz-box-shadow: inset rgba(255,255,255,0.3) 0 1px 0, rgba(0,0,0,0.4) 0 1px 4px;
+  -webkit-box-shadow: inset rgba(255,255,255,0.3) 0 1px 0, rgba(0,0,0,0.4) 0 1px 4px;
+  box-shadow: inset rgba(255,255,255,0.3) 0 1px 0, rgba(0,0,0,0.4) 0 1px 4px;
+}
+
+#sv_settings p.submit a.button {
+  display:inline-block;
+}
+
+#sv_settings p.submit input:active, #sv_settings p.submit a.button:active {
+  background: #1ba2eb;
+  background: -moz-linear-gradient(top, #0a3ec9 0%, #1ba2eb 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#0a3ec9), color-stop(100%,#1ba2eb));
+  background: -webkit-linear-gradient(top, #0a3ec9 0%,#1ba2eb 100%);
+  background: -o-linear-gradient(top, #0a3ec9 0%,#1ba2eb 100%);
+  background: -ms-linear-gradient(top, #0a3ec9 0%,#1ba2eb 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0a3ec9', endColorstr='#1ba2eb',GradientType=0 );
+  background: linear-gradient(top, #0a3ec9 0%,#1ba2eb 100%);
+}
+
+#sv_settings select {
+  height:32px;
+  line-height:32px;
+  padding:0 40px 0 10px;
+  margin-bottom:10px;
+  font-family:inherit;
+  font-size:15px;
+  color:#545e75;
+  background:url(../../assets/img/custom_select_back.gif) no-repeat right center;
+  border:1px solid #333946;
+  text-shadow:rgba(255,255,255,0.8) 0 1px 0;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-appearance:none;  
+}
+
+#sv_settings code {
+  font-family:Monaco, Courrier, monospace;
+  background:#ced9f0;
+}
+
+.breakline {
+  background:#9daece;
+  height:1px;
+  border-bottom:1px solid #fff;
+  margin:10px 0;
+}
+
+#sv_settings p.desc {
+  font-size:13px;
+  color:#56688e;
+  line-height:22px;
+}
+
+#sv_settings p.desc a {
+  color:#545e75;
+  text-decoration:underline;
+}
+
+p.note {
+  
+}
+
+a {
+  text-decoration:none;
+}
