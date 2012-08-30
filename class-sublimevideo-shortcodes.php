@@ -98,7 +98,7 @@ class SublimeVideoShortcodes {
     return join(" ", $attrs);
   }
 
-  static function data_attributes($attributes, $name) {
+  static function data_attributes($attributes) {
     $data = array();
 
     foreach (SublimeVideo::$data_attributes as $data_attribute) {
