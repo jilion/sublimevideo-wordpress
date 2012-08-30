@@ -7,12 +7,12 @@ Plugin Name: SublimeVideo - HTML5 Video Player
 Plugin URI: http://docs.sublimevideo.net/wordpress
 Author: SublimeVideo
 Author URI: http://sublimevideo.net
-Version: 1.3.2
+Version: 1.4.0
 Description: SublimeVideo is the most reliable HTML5 Video Player on the Web. It allows your videos to play flawlessly on any device or browser and in any page.
 License: GPLv2 or later
 */
 
-define('SUBLIMEVIDEO_PLUGIN_VERSION', '1.3.2');
+define('SUBLIMEVIDEO_PLUGIN_VERSION', '1.4.0');
 define('SUBLIMEVIDEO_PLUGIN_URL', plugin_dir_url( __FILE__ ));
 
 // A class with translations
@@ -28,8 +28,11 @@ class SublimeVideo {
   const FORMAT_TITLE     = 0;
   const FORMAT_QUALITIES = 1;
 
-  // allowed "behaviors" (fired through the JS API)
-  // these behaviors can be added in the shortcode without value, e.g.: [sublimevideo src1='' loop]
+  // Allowed data- attributes.
+  static $data_attributes = array('uid', 'name', 'settings');
+
+  // Allowed "behaviors" (fired through the JS API).
+  // These behaviors can be added in the shortcode without value, e.g.: [sublimevideo src1='' loop]
   static $behaviors = array('loop', 'autoplay');
 
   // Add webm to the uploadable extensions

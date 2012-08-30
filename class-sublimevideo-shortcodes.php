@@ -35,8 +35,9 @@ class SublimeVideoShortcodes {
       $attributes[] = $dimension.'="'.$params['final_'.$dimension].'"';
     }
 
-    if (isset($params['data_uid'])) $attributes[] = 'data_uid="'.$params['data_uid'].'"';
-    if (isset($params['data_name'])) $attributes[] = 'data_name="'.$params['data_name'].'"';
+    foreach (SublimeVideo::$data_attributes as $data_attribute) {
+      if (isset($params['data_'.$data_attribute])) $attributes[] = 'data-'.$data_attribute.'="'.$params['data_'.$data_attribute].'"';
+    }
 
     foreach (SublimeVideo::$behaviors as $behavior) {
       if (isset($params[$behavior]) && $params[$behavior] == '1') $attributes[] = $behavior;
@@ -47,41 +48,10 @@ class SublimeVideoShortcodes {
 
   // function to process the shortcode
   static function normal($attributes) {
-    $behaviors = array();
-    $i = 0;
-    $total = count(SublimeVideo::$behaviors);
-    while (isset($attributes[$i])) {
-      if (in_array($attributes[$i], SublimeVideo::$behaviors)) {
-        $behaviors[] = $attributes[$i];
-      }
-      $i++;
-    }
+    $atts = shortcode_atts(self::default_array(), $attributes);
 
-    $atts = shortcode_atts(array(
-      'id'        => '',
-      'class'     => 'sublime',
-      'style'     => '',
-      'width'     => esc_attr(get_option('sv_player_width')),
-      'height'    => '',
-      'poster'    => '',
-      'preload'   => 'none',
-      'data_uid'  => '',
-      'data_name' => ''
-    ), $attributes);
-
-    $id        = $atts['id'] != '' ? " id='".$atts['id']."'" : '';
-    $class     = $atts['class'] != '' ? " class='".$atts['class']."'" : '';
-    $style     = $atts['style'] != '' ? " style='".$atts['style']."'" : '';
-    $width     = " width='".$atts['width']."'";
-    $height    = " height='".$atts['height']."'";
-    $poster    = " poster='".$atts['poster']."'";
-    $preload   = " preload='".$atts['preload']."'";
-    $data_uid  = $atts['data_uid'] != '' ? " data-uid='".$atts['data_uid']."'" : '';
-    $data_name = $atts['data_name'] != '' ? " data-name='".$atts['data_name']."'" : '';
-    $behaviors = !empty($behaviors) ? " data-sublime-wp='".join(' ', $behaviors)."'" : '';
-
-    $html = "<video".$id.$class.$style.$width.$height.$poster.$preload.$data_uid.$data_name.$behaviors.">\n";
-    foreach (SublimeVideoUtils::extract_shortcode_src_from_hash($attributes) as $source) {
+    $html = "<video ".self::attributes($atts)." ".self::data_attributes($atts)." ".self::behaviors($attributes).">\n";
+    foreach (self::extract_sources($attributes) as $source) {
       $data_quality = $source['quality'] != '' ? " data-quality='".$source['quality']."'" : '';
       $html .= "\t<source src='".$source['src']."'".$data_quality." />\n";
     }
@@ -98,6 +68,67 @@ class SublimeVideoShortcodes {
     ), $attributes);
 
     return "<a class='sublime' href=''>$content</a>".SublimeVideoShortcodes::normal($atts);
+  }
+
+  static function default_array() {
+    $array = array(
+      'id'      => '',
+      'class'   => 'sublime',
+      'style'   => '',
+      'width'   => esc_attr(get_option('sv_player_width')),
+      'height'  => '',
+      'poster'  => '',
+      'preload' => 'none'
+    );
+
+    foreach (SublimeVideo::$data_attributes as $data_attribute) {
+      $array['data_'.$data_attribute] = '';
+    }
+
+    return $array;
+  }
+
+  static function attributes($attributes) {
+    $attrs = array();
+
+    foreach (array('id', 'class', 'style', 'width', 'height', 'poster', 'preload') as $key) {
+      if ($attributes[$key] != '') $attrs[] = $key."='".$attributes[$key]."'";
+    }
+
+    return join(" ", $attrs);
+  }
+
+  static function data_attributes($attributes, $name) {
+    $data = array();
+
+    foreach (SublimeVideo::$data_attributes as $data_attribute) {
+      if ($attributes['data_'.$data_attribute] != '') $data[] = "data-".$data_attribute."='".$attributes['data_'.$data_attribute]."'";
+    }
+
+    return join(" ", $data);
+  }
+
+  static function behaviors($attributes) {
+    $behaviors = array();
+
+    foreach (SublimeVideo::$behaviors as $behavior) {
+      if (in_array($behavior, $attributes)) $behaviors[] = $behavior;
+    }
+
+    return empty($behaviors) ? "" : "data-sublime-wp='".join(' ', $behaviors)."'";
+  }
+
+  static function extract_sources($hash) {
+    ksort($hash);
+    $sources = array();
+    foreach ($hash as $key => $value) {
+      if (preg_match('/^src/i', $key) && $value != '') {
+        preg_match('/(\((\w+)\))?(.+)/', $value, $matches);
+        $sources[] = array('quality' => $matches[2], 'src' => $matches[3]);
+      }
+    }
+
+    return $sources;
   }
 
 }

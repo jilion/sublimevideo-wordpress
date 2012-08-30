@@ -1,9 +1,9 @@
 === SublimeVideo - HTML5 Video Player ===
 Contributors: sublimevideo
-Tags: html5, video, sublimevideo
+Tags: html5, video, player, sublimevideo
 Requires at least: 3.0
-Tested up to: 3.3.1
-Stable tag: 1.3.2
+Tested up to: 3.4.1
+Stable tag: 1.4.0
 
 SublimeVideo is the most reliable HTML5 Video Player on the Web. It allows your videos to play flawlessly on any device or browser and in any page.
 
@@ -37,6 +37,9 @@ Please find the full documentation (installation, usage, shortcode, troubleshoot
 1. The plugin's video embed builder.
 
 == Changelog ==
+
+= 1.4.0 =
+* Added support for the `data_settings` attribute (mapping to the `data-settings` HTML attribute).
 
 = 1.3.2 =
 * Fixed issue: Autoplay and loop features didn't work in IE < 9.

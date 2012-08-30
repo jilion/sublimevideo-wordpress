@@ -112,21 +112,6 @@ class SublimeVideoUtils {
     return $html;
   }
 
-  // Shortcode stuff
-  static function extract_shortcode_src_from_hash($hash) {
-    ksort($hash);
-    $sources = array();
-    foreach ($hash as $key => $value) {
-      if (preg_match('/^src/i', $key) && $value != '') {
-        preg_match('/(\((\w+)\))?(.+)/', $value, $matches);
-        $sources[] = array('quality' => $matches[2], 'src' => $matches[3]);
-      }
-    }
-
-    return $sources;
-  }
-
-
   // Misc stuff
   static function non_blank($value) {
     return '' != $value;
