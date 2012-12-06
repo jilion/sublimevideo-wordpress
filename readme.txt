@@ -2,7 +2,7 @@
 Contributors: sublimevideo
 Tags: html5, video, player, sublimevideo
 Requires at least: 3.0
-Tested up to: 3.4.1
+Tested up to: 3.4.2
 Stable tag: 1.5.0
 
 SublimeVideo is the most reliable HTML5 Video Player on the Web. It allows your videos to play flawlessly on any device or browser and in any page.
