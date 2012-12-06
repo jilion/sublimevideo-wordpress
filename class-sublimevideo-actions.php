@@ -16,7 +16,7 @@ class SublimeVideoFrontendActions {
 
   // insert JavaScript before </body> to enable autoplay and/or loop feature using SublimeVideo's JS API
   static function inject_javascript_integration() {
-    if ( !is_admin() || is_preview() ) {
+    if ( (!is_admin() || is_preview()) && get_option('sv_player_stage') == 'stable' ) {
       echo <<<_end_
       <script type='text/javascript'>
         sublimevideo.ready(function(){for(var c=document.getElementsByTagName("video"),a,d,e=[],b=0;b<c.length;b++)if(a=c[b].getAttribute("data-sublime-wp"),void 0!=a){a=a.split(/\s/);for(var f=0;f<a.length;f++)void 0==d&&-1!=a[f].indexOf("autoplay")&&(d=c[b]),-1!=a[f].indexOf("loop")&&e.push(c[b])}d&&sublimevideo.prepareAndPlay(d);if(0<e.length)sublimevideo.onEnd(function(a){for(var b=0;b<e.length;b++)e[b]==a.element&&sublimevideo.play(a.element)})});

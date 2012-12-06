@@ -7,15 +7,8 @@ class SublimeVideoShortcodes {
 
   static function create_shortcode_from_params($params) {
     $shortcode_base = 'sublimevideo';
-
-    // Floating lightbox feature
-    // if ( isset($params['lightbox']) && $params['lightbox'] == '1' ) {
-    //   $shortcode_base .= '-lightbox';
-    // }
-
-    $attributes = array();
-
-    $attributes[] = 'poster="'.$params[$params['poster_source'].'_poster_url'].'"';
+    $attributes     = array();
+    $attributes[]   = 'poster="'.$params[$params['poster_source'].'_poster_url'].'"';
 
     $i = 1;
     foreach (SublimeVideo::$formats as $format => $infos) {
@@ -33,14 +26,6 @@ class SublimeVideoShortcodes {
     $dimensions = array( 'width', 'height' );
     foreach ($dimensions as $dimension) {
       $attributes[] = $dimension.'="'.$params['final_'.$dimension].'"';
-    }
-
-    foreach (SublimeVideo::$data_attributes as $data_attribute) {
-      if (isset($params['data_'.$data_attribute])) $attributes[] = 'data-'.$data_attribute.'="'.$params['data_'.$data_attribute].'"';
-    }
-
-    foreach (SublimeVideo::$behaviors as $behavior) {
-      if (isset($params[$behavior]) && $params[$behavior] == '1') $attributes[] = $behavior;
     }
 
     return '['.$shortcode_base.' '.join(" ", $attributes).']';
@@ -72,16 +57,17 @@ class SublimeVideoShortcodes {
 
   static function default_array() {
     $array = array(
-      'id'      => '',
-      'class'   => 'sublime',
-      'style'   => '',
-      'width'   => esc_attr(get_option('sv_player_width')),
-      'height'  => '',
-      'poster'  => '',
-      'preload' => 'none'
+      'id'       => '',
+      'class'    => 'sublime',
+      'style'    => '',
+      'width'    => esc_attr(get_option('sv_player_width')),
+      'height'   => '',
+      'poster'   => '',
+      'preload'  => 'none'
     );
 
-    foreach (SublimeVideo::$data_attributes as $data_attribute) {
+    foreach (SublimeVideo::$allowed_data_attributes as $data_attribute) {
+      $array[$data_attribute] = '';
       $array['data_'.$data_attribute] = '';
     }
 
@@ -99,23 +85,45 @@ class SublimeVideoShortcodes {
   }
 
   static function data_attributes($attributes) {
-    $data = array();
+    $data_attributes = array();
 
-    foreach (SublimeVideo::$data_attributes as $data_attribute) {
-      if ($attributes['data_'.$data_attribute] != '') $data[] = "data-".$data_attribute."='".$attributes['data_'.$data_attribute]."'";
+    foreach (SublimeVideo::$allowed_data_attributes as $data_attribute) {
+      $data = null;
+      if ($attributes[$data_attribute] != '') {
+        $data = $attributes[$data_attribute];
+      } else if ($attributes['data_'.$data_attribute] != '') {
+        $data = $attributes['data_'.$data_attribute];
+      }
+
+      if ($data) $data_attributes[] = "data-".$data_attribute."='".$data."'";
     }
 
-    return join(" ", $data);
+    return join(" ", $data_attributes);
   }
 
   static function behaviors($attributes) {
-    $behaviors = array();
+    $behaviors       = array();
+    $data_attributes = array();
 
-    foreach (SublimeVideo::$behaviors as $behavior) {
-      if (in_array($behavior, $attributes)) $behaviors[] = $behavior;
+    foreach (SublimeVideo::$allowed_behaviors as $behavior) {
+      if (in_array($behavior, $attributes)) {
+        if (get_option('sv_player_stage') == 'stable') {
+          $behaviors[] = $behavior;
+        }
+        else {
+          switch ($behavior) {
+            case 'autoplay':
+              $data_attributes[] = "data-autoplay='true'";
+              break;
+            case 'loop':
+              $data_attributes[] = "data-on-end='replay'";
+              break;
+          }
+        }
+      }
     }
 
-    return empty($behaviors) ? "" : "data-sublime-wp='".join(' ', $behaviors)."'";
+    return empty($behaviors) ? join(' ', $data_attributes) : "data-sublime-wp='".join(' ', $behaviors)."'";
   }
 
   static function extract_sources($hash) {
