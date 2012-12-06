@@ -7,7 +7,11 @@ class SublimeVideoFrontendActions {
 
   // insert the SublimeVideo javascript into the header
   static function inject_license() {
-    echo '<script type="text/javascript" src="'.(is_ssl() ? 'https://4076.voxcdn.com' : 'http://cdn.sublimevideo.net').'/js/'.get_option('sv_site_token').'.js"></script>';
+    $stage = '';
+    if (get_option('sv_player_stage') != 'stable') {
+      $stage = '-'.get_option('sv_player_stage');
+    }
+    echo '<script type="text/javascript" src="//cdn.sublimevideo.net/js/'.get_option('sv_site_token').$stage.'.js"></script>';
   }
 
   // insert JavaScript before </body> to enable autoplay and/or loop feature using SublimeVideo's JS API
