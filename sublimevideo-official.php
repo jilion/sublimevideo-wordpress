@@ -7,12 +7,12 @@ Plugin Name: SublimeVideo - HTML5 Video Player
 Plugin URI: http://docs.sublimevideo.net/wordpress
 Author: SublimeVideo
 Author URI: http://sublimevideo.net
-Version: 1.4.1
+Version: 1.5.0
 Description: SublimeVideo is the most reliable HTML5 Video Player on the Web. It allows your videos to play flawlessly on any device or browser and in any page.
 License: GPLv2 or later
 */
 
-define('SUBLIMEVIDEO_PLUGIN_VERSION', '1.4.1');
+define('SUBLIMEVIDEO_PLUGIN_VERSION', '1.5.0');
 define('SUBLIMEVIDEO_PLUGIN_URL', plugin_dir_url( __FILE__ ));
 
 // A class with translations
@@ -29,11 +29,15 @@ class SublimeVideo {
   const FORMAT_QUALITIES = 1;
 
   // Allowed data- attributes.
-  static $data_attributes = array('uid', 'name', 'settings');
+  static $allowed_data_attributes = array('uid', 'name', 'settings');
 
   // Allowed "behaviors" (fired through the JS API).
   // These behaviors can be added in the shortcode without value, e.g.: [sublimevideo src1='' loop]
-  static $behaviors = array('loop', 'autoplay');
+  static $allowed_behaviors = array('loop', 'autoplay');
+
+  // Allowed "behaviors" (fired through the JS API).
+  // These behaviors can be added in the shortcode without value, e.g.: [sublimevideo src1='' loop]
+  static $default_player_stage = 'stable';
 
   // Add webm to the uploadable extensions
   static function allow_webm_uploading( $existing_mimes=array() ) {
@@ -71,6 +75,9 @@ require_once dirname( __FILE__ ) . '/class-sublimevideo-actions.php';
 
 // Shortcode definition / generation
 require_once dirname( __FILE__ ) . '/class-sublimevideo-shortcodes.php';
+
+// A class that renders all the UIs
+require_once dirname( __FILE__ ) . '/class-sublimevideo-ui.php';
 
 if ( is_admin() ) {
   // Wrapper to access the SublimeVideo service API
