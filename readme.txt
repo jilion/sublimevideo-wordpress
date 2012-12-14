@@ -1,9 +1,9 @@
 === SublimeVideo - HTML5 Video Player ===
 Contributors: sublimevideo
-Tags: html5, video, player, sublimevideo
+Tags: html5, video, player, sublimevideo, horizon, framework
 Requires at least: 3.0
-Tested up to: 3.4.2
-Stable tag: 1.5.1
+Tested up to: 3.5.0
+Stable tag: 1.5.2
 
 SublimeVideo is the most reliable HTML5 Video Player on the Web. It allows your videos to play flawlessly on any device or browser and in any page.
 
@@ -19,7 +19,7 @@ You can sign up for a free and unlimited account at [http://sublimevideo.net](ht
 
 This plugin allows you to easily integrate SublimeVideo Player with your WordPress site. It provides an [easy-to-use visual editor](http://wordpress.org/extend/plugins/sublimevideo-official/screenshots) that will help you generate shortcodes for your videos.
 
-Please find the full documentation (installation, usage, shortcode, troubleshooting) at [http://docs.sublimevideo.net/wordpress](http://docs.sublimevideo.net/wordpress).
+Please find the full documentation (installation, usage, shortcode, troubleshooting) at [http://docs.sublimevideo.net/wordpress](http://docs.sublimevideo.net/beta/wordpress).
 
 == Installation ==
 
@@ -28,15 +28,19 @@ Please find the full documentation (installation, usage, shortcode, troubleshoot
 3. Go to the SublimeVideo plugin settings page and authorize the plugin to access some of your SublimeVideo data.
 4. Once the authorization is done, you will see your SublimeVideo sites listed in a select menu in the plugin settings page; you’ll have to choose the one matching the domain of your WordPress site. If you only have one site registered in your SublimeVideo account, it’ll be selected automatically.
 5. In the plugin setting page you can also set the default width for all the videos you will embed.
-6. Go to the post editor, you should see the new button next to the media icons (image, video, audio…) – the plugin’s installation is now complete. If you don’t see it, please refer to the Troubleshooting section at: [http://docs.sublimevideo.net/wordpress#troubleshooting](http://docs.sublimevideo.net/wordpress#troubleshooting).
+6. Go to the post editor, you should see the new button next to the media icons (image, video, audio…) – the plugin’s installation is now complete. If you don’t see it, please refer to the Troubleshooting section at: [http://docs.sublimevideo.net/beta/wordpress#troubleshooting](http://docs.sublimevideo.net/wordpress#troubleshooting).
 
-Please find the full documentation (installation, usage, shortcode, troubleshooting) at [http://docs.sublimevideo.net/wordpress](http://docs.sublimevideo.net/wordpress).
+Please find the full documentation (installation, usage, shortcode, troubleshooting) at [http://docs.sublimevideo.net/wordpress](http://docs.sublimevideo.net/beta/wordpress).
 
 == Screenshots ==
 
 1. The plugin's video embed builder.
 
 == Changelog ==
+
+= 1.5.2 =
+* Fixed a warning occurring in debug mode.
+* Fixed a button design issue.
 
 = 1.5.1 =
 * Fixed issue: Added a missing file.

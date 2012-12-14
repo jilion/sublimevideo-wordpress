@@ -197,9 +197,9 @@ class SublimeVideoUI {
 add_action('admin_init', array('SublimeVideoAdmin', 'init'));
 
 // Add an item in the plugins menu
-add_action('admin_menu', array('SublimeVideoAdmin', 'config_page'));
+add_action('admin_menu', array('SublimeVideoUI', 'config_page'));
 
 // Add a link in the plugins list
-add_filter('plugin_action_links', array('SublimeVideoAdmin', 'plugin_action_links'), 10, 2);
+add_filter('plugin_action_links', array('SublimeVideoUI', 'plugin_action_links'), 10, 2);
 
 ?>

@@ -58,6 +58,7 @@
 
 #sv_settings p.submit input, #sv_settings p.submit a.button {
   margin:10px 0;
+  height:46px;
   color:#fff;
   text-shadow:rgba(0,0,0,0.8) 0 -1px 0;
   font-size:14px !important;
@@ -109,7 +110,7 @@
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
   border-radius: 6px;
-  -webkit-appearance:none;  
+  -webkit-appearance:none;
 }
 
 #sv_settings code {
@@ -136,7 +137,7 @@
 }
 
 p.note {
-  
+
 }
 
 a {

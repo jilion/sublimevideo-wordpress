@@ -57,13 +57,13 @@ class SublimeVideoShortcodes {
 
   static function default_array() {
     $array = array(
-      'id'       => '',
-      'class'    => 'sublime',
-      'style'    => '',
-      'width'    => esc_attr(get_option('sv_player_width')),
-      'height'   => '',
-      'poster'   => '',
-      'preload'  => 'none'
+      'id'      => '',
+      'class'   => 'sublime',
+      'style'   => '',
+      'width'   => esc_attr(get_option('sv_player_width')),
+      'height'  => '',
+      'poster'  => '',
+      'preload' => 'none'
     );
 
     foreach (SublimeVideo::$allowed_data_attributes as $data_attribute) {
