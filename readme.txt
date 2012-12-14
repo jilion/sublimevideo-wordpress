@@ -3,7 +3,7 @@ Contributors: sublimevideo
 Tags: html5, video, player, sublimevideo
 Requires at least: 3.0
 Tested up to: 3.4.2
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 
 SublimeVideo is the most reliable HTML5 Video Player on the Web. It allows your videos to play flawlessly on any device or browser and in any page.
 
@@ -38,7 +38,7 @@ Please find the full documentation (installation, usage, shortcode, troubleshoot
 
 == Changelog ==
 
-= 1.5.0 =
+= 1.5.1 =
 * Added support for the [New SublimeVideo Player](http://sublimevideo.net/modular-player) (beta) powered by [SublimeVideo Horizon](http://sublimevideo.net/horizon-framework).
 * Added support for the `uid`, `name` and `settings` attributes (mapping to `data-uid`, `data-name` and `data-settings` HTML attribute). See http://docs.sublimevideo.net/beta/settings/usage to learn more about these attributes.
 * Improvement: From now on, when you deactivate the plugin, its settings are deleted.
