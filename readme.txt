@@ -39,6 +39,9 @@ Please find the full documentation (installation, usage, shortcode, troubleshoot
 == Changelog ==
 
 = 1.5.1 =
+* Fixed issue: Added a missing file.
+
+= 1.5.0 =
 * Added support for the [New SublimeVideo Player](http://sublimevideo.net/modular-player) (beta) powered by [SublimeVideo Horizon](http://sublimevideo.net/horizon-framework).
 * Added support for the `uid`, `name` and `settings` attributes (mapping to `data-uid`, `data-name` and `data-settings` HTML attribute). See http://docs.sublimevideo.net/beta/settings/usage to learn more about these attributes.
 * Improvement: From now on, when you deactivate the plugin, its settings are deleted.
