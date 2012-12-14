@@ -43,7 +43,12 @@ else {
     var assetsBasePath = "<?php $upload_dir = wp_upload_dir(); echo $upload_dir['baseurl'] ?>";
   </script>
   <?php
-  echo '<script type="text/javascript" src="'.( is_ssl() ? 'https://4076.voxcdn.com' : 'http://cdn.sublimevideo.net' ).'/js/'.get_option('sv_site_token').'.js"></script>';
+  $stage = '';
+  if (get_option('sv_player_stage') && get_option('sv_player_stage') != 'stable') {
+    $stage = '-'.get_option('sv_player_stage');
+  }
+  echo '<script type="text/javascript" src="//cdn.sublimevideo.net/js/'.get_option('sv_site_token').$stage.'.js"></script>';
+
   if ( is_rtl() ) : ?>
   <style type="text/css">
     #wphead, #tabs {

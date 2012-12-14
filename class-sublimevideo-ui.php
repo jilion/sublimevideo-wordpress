@@ -22,9 +22,7 @@ class SublimeVideoUI {
 
     if (false === strpos($_SERVER['QUERY_STRING'], 'page=sublimevideo-settings')) return;
 
-    $api   = new SublimeVideoAPI();
-    $admin = new SublimeVideoAdmin($api);
-
+    $api = new SublimeVideoAPI();
     $redirect_uri = admin_url('plugins.php?page=sublimevideo-settings');
 
     // received authorization code, exchange it for an access token
@@ -51,6 +49,7 @@ class SublimeVideoUI {
       ?>
       <div class="breakline"></div>
       <?php
+      $admin = new SublimeVideoAdmin($api);
       $available_sites = $admin->available_sites();
       $clean_http_host = SublimeVideoAdmin::clean_http_host();
 

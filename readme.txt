@@ -39,8 +39,9 @@ Please find the full documentation (installation, usage, shortcode, troubleshoot
 == Changelog ==
 
 = 1.5.0 =
-* Added support for the [new SublimeVideo player](http://sublimevideo.net/sublime-video-player) (in Beta) is powered by [SublimeVideo Horizon](http://sublimevideo.net/horizon-framework).
-* Added support for the `uid`, `name` and `settings` attributes (mapping to `data-uid`, `data-name` and `data-settings` HTML attribute). See http://docs.sublimevideo.net/beta/player-settings to learn more about these attributes.
+* Added support for the [New SublimeVideo Player](http://sublimevideo.net/modular-player) (beta) powered by [SublimeVideo Horizon](http://sublimevideo.net/horizon-framework).
+* Added support for the `uid`, `name` and `settings` attributes (mapping to `data-uid`, `data-name` and `data-settings` HTML attribute). See http://docs.sublimevideo.net/beta/settings/usage to learn more about these attributes.
+* Improvement: From now on, when you deactivate the plugin, its settings are deleted.
 
 = 1.4.1 =
 * Fixed an issue that was occuring for old PHP versions.

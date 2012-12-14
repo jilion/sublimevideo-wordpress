@@ -28,6 +28,10 @@ class SublimeVideo {
   const FORMAT_TITLE     = 0;
   const FORMAT_QUALITIES = 1;
 
+  // Settings
+  static $user_editable_settings = array('sv_site_token', 'sv_site_domain', 'sv_player_width', 'sv_player_stage');
+  static $non_editable_settings  = array('sv_oauth_token');
+
   // Allowed data- attributes.
   static $allowed_data_attributes = array('uid', 'name', 'settings');
 
@@ -45,9 +49,25 @@ class SublimeVideo {
     return $existing_mimes;
   }
 
+  public function install() {
+    update_option('sv_player_width', SublimeVideoUtils::video_default_width());
+    update_option('sv_player_stage', SublimeVideo::$default_player_stage);
+  }
+
+  public function uninstall() {
+    foreach (SublimeVideo::$user_editable_settings as $setting) {
+      delete_option($setting);
+    }
+    foreach (SublimeVideo::$non_editable_settings as $setting) {
+      delete_option($setting);
+    }
+  }
+
   public static $instance = null;
 
   public function __construct() {
+    register_activation_hook( __FILE__, array( $this, 'install' ) );
+    register_deactivation_hook( __FILE__, array( $this, 'uninstall' ) );
     $this->locales  = new SublimeVideoLocales( 'en' );
     self::$instance = $this;
   }

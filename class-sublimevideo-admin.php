@@ -5,17 +5,14 @@ class SublimeVideoAdmin {
     wp_register_style('sublimevideo.css', SUBLIMEVIDEO_PLUGIN_URL.'assets/css/settings.css');
     wp_enqueue_style('sublimevideo.css');
 
-    $settings = array('sv_site_token', 'sv_site_domain', 'sv_player_width', 'sv_player_stage');
     // register our settings
-    foreach ($settings as $setting) {
+    foreach (SublimeVideo::$user_editable_settings as $setting) {
       register_setting('sv-settings-group', $setting);
     }
   }
 
   public function __construct($api) {
     $this->api = $api;
-    if (!get_option('sv_player_width')) update_option('sv_player_width', SublimeVideoUtils::video_default_width());
-    if (!get_option('sv_player_stage')) update_option('sv_player_stage', SublimeVideo::$default_player_stage);
   }
 
   /* We need to handle hostname with subdomains (even www.).

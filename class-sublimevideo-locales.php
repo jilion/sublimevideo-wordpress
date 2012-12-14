@@ -18,7 +18,7 @@ class SublimeVideoLocales {
                         You don't have any site licensed for <strong>%s</strong> on <a href='https://my.sublimevideo.net/sites' onclick='window.open(this); return false'>SublimeVideo</a>.
                        </p>
                        <p class='desc'>
-                        Please add <strong>%s</strong> as the main, extra or development domain to an <a href='https://my.sublimevideo.net/sites' onclick='window.open(this); return false'>existing site</a> or a <a href='https://my.sublimevideo.net/sites/new' onclick='window.open(this); return false'>new site</a>.</p>",
+                        Please add <strong>%s</strong> as the main, extra or development domain to an <a href='https://my.sublimevideo.net/sites' onclick='window.open(this); return false'>existing site</a> or a <a href='https://my.sublimevideo.net/assistant/new-site' onclick='window.open(this); return false'>new site</a>.</p>",
 
         'site' => "<input type='text' value='%s' readonly size='%d' />",
         'view_site' => "Domain retrieved from <a id='view_site_link' href='https://my.sublimevideo.net/sites/%s/edit' onclick='window.open(this); return false'>SublimeVideo</a>.",
@@ -33,7 +33,7 @@ class SublimeVideoLocales {
 
         'default_width_note' => "<p class='desc'>Note: This will default to the maximum width of your theme (you can also change it when adding a video to your post).</p>",
 
-        'player_stage_note' => "<p class='desc'>The <a href='http://sublimevideo.net/sublime-video-player' onclick='window.open(this); return false'>new SublimeVideo player</a> (in Beta) is powered by <a href='http://sublimevideo.net/horizon-framework' onclick='window.open(this); return false'>SublimeVideo Horizon</a>.</p>",
+        'player_stage_note' => "<p class='desc'>The <a href='http://sublimevideo.net/modular-player' onclick='window.open(this); return false'>New SublimeVideo Player</a> (beta) powered by <a href='http://sublimevideo.net/horizon-framework' onclick='window.open(this); return false'>SublimeVideo Horizon</a>.</p>",
 
         'more_information' => "<p class='desc'>For more information, please <a href='http://docs.sublimevideo.net/wordpress' onclick='window.open(this); return false'><strong>consult the documentation</strong></a> or <a href='http://sublimevideo.net/help' onclick='window.open(this); return false'><strong>ask for some help</strong></a>.</p>"
 
