@@ -19,7 +19,7 @@ class SublimeVideoAdmin {
   *  In my.sublimevideo.net, the "special" www. subdomain is removed though...
   */
   public function available_sites() {
-    if (!$this->available_sites) {
+    if (!isset($this->available_sites)) {
       $sites = $this->api->sites();
       $this->available_sites = array();
 

@@ -38,8 +38,11 @@ Please find the full documentation (installation, usage, shortcode, troubleshoot
 
 == Changelog ==
 
+= Master =
+* Fixed a "Undefined property" warning visible in debug mode.
+
 = 1.5.2 =
-* Fixed a warning occurring in debug mode.
+* Fixed a warning visible in debug mode.
 * Fixed a button design issue.
 
 = 1.5.1 =
