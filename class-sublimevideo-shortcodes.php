@@ -132,7 +132,7 @@ class SublimeVideoShortcodes {
     foreach ($hash as $key => $value) {
       if (preg_match('/^src/i', $key) && $value != '') {
         preg_match('/(\((\w+)\))?(.+)/', $value, $matches);
-        $sources[] = array('quality' => $matches[2], 'src' => $matches[3]);
+        $sources[] = array('quality' => $matches[2], 'src' => do_shortcode($matches[3]));
       }
     }
 
