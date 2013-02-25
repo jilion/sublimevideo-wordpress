@@ -31,31 +31,7 @@ class SublimeVideoShortcodes {
     return '['.$shortcode_base.' '.join(" ", $attributes).']';
   }
 
-  // function to process the shortcode
-  static function normal($attributes) {
-    $atts = shortcode_atts(self::default_array(), $attributes);
-
-    $html = "<video ".self::attributes($atts)." ".self::data_attributes($atts)." ".self::behaviors($attributes).">\n";
-    foreach (self::extract_sources($attributes) as $source) {
-      $data_quality = $source['quality'] != '' ? " data-quality='".$source['quality']."'" : '';
-      $html .= "\t<source src='".$source['src']."'".$data_quality." />\n";
-    }
-    $html .= "</video>\n";
-
-    return $html;
-  }
-
-  // Process the shortcode for the floating lightbox feature
-  static function lightbox($attributes, $content='') {
-    $atts = array_merge(array(
-      'class' => 'sublime zoom',
-      'style' => 'display:none;'
-    ), $attributes);
-
-    return "<a class='sublime' href=''>$content</a>".SublimeVideoShortcodes::normal($atts);
-  }
-
-  static function default_array() {
+  static function default_video_attributes() {
     $array = array(
       'id'      => '',
       'class'   => 'sublime',
@@ -65,6 +41,13 @@ class SublimeVideoShortcodes {
       'poster'  => '',
       'preload' => 'none'
     );
+    if ($array['id'] == '') $array['id'] = "video".rand();
+
+    return $array;
+  }
+
+  static function default_video_settings() {
+    $array = array();
 
     foreach (SublimeVideo::$allowed_data_attributes as $data_attribute) {
       $array[$data_attribute] = '';
@@ -72,33 +55,6 @@ class SublimeVideoShortcodes {
     }
 
     return $array;
-  }
-
-  static function attributes($attributes) {
-    $attrs = array();
-
-    foreach (array('id', 'class', 'style', 'width', 'height', 'poster', 'preload') as $key) {
-      if ($attributes[$key] != '') $attrs[] = $key."='".$attributes[$key]."'";
-    }
-
-    return join(" ", $attrs);
-  }
-
-  static function data_attributes($attributes) {
-    $data_attributes = array();
-
-    foreach (SublimeVideo::$allowed_data_attributes as $data_attribute) {
-      $data = null;
-      if ($attributes[$data_attribute] != '') {
-        $data = $attributes[$data_attribute];
-      } else if ($attributes['data_'.$data_attribute] != '') {
-        $data = $attributes['data_'.$data_attribute];
-      }
-
-      if ($data) $data_attributes[] = "data-".$data_attribute."='".$data."'";
-    }
-
-    return join(" ", $data_attributes);
   }
 
   static function behaviors($attributes) {
@@ -126,7 +82,7 @@ class SublimeVideoShortcodes {
     return empty($behaviors) ? join(' ', $data_attributes) : "data-sublime-wp='".join(' ', $behaviors)."'";
   }
 
-  static function extract_sources($hash) {
+  static function sources($hash) {
     ksort($hash);
     $sources = array();
     foreach ($hash as $key => $value) {
@@ -139,12 +95,79 @@ class SublimeVideoShortcodes {
     return $sources;
   }
 
+  public function __construct($attributes=array()) {
+    $this->video_attributes = shortcode_atts(self::default_video_attributes(), $attributes);
+    $this->video_settings   = shortcode_atts(self::default_video_settings(), $attributes);
+    $this->video_behaviors  = self::behaviors($attributes);
+    $this->sources          = self::sources($attributes);
+  }
+
+  // function to process the shortcode
+  static function video($attributes) {
+    $shortcode = new SublimeVideoShortcodes($attributes);
+
+    return $shortcode->generate_video_code();
+  }
+
+  public function generate_video_code() {
+    $html = "<video ".$this->write_video_attributes()." ".join(' ', $this->write_data_settings())." ".$this->video_behaviors.">\n";
+    foreach ($this->sources as $source) {
+      $data_quality = $source['quality'] != '' ? " data-quality='".$source['quality']."'" : '';
+      $html .= "\t<source src='".$source['src']."'".$data_quality." />\n";
+    }
+    $html .= "</video>\n";
+
+    return $html;
+  }
+
+  function write_video_attributes() {
+    $attrs = array();
+
+    foreach (array('id', 'class', 'style', 'width', 'height', 'poster', 'preload') as $key) {
+      if ($this->video_attributes[$key] != '') $attrs[] = $key."='".$this->video_attributes[$key]."'";
+    }
+
+    return join(' ', $attrs);
+  }
+
+  function write_data_settings() {
+    $data_attributes = array();
+
+    foreach (SublimeVideo::$allowed_data_attributes as $data_attribute) {
+      $data = null;
+      if ($this->video_settings[$data_attribute] != '') {
+        $data = $this->video_settings[$data_attribute];
+      } else if ($this->video_settings['data_'.$data_attribute] != '') {
+        $data = $this->video_settings['data_'.$data_attribute];
+      }
+
+      if ($data) $data_attributes[] = "data-".$data_attribute."='".$data."'";
+    }
+
+    return join(" ", $data_attributes);
+  }
+
+  // Process the shortcode for the floating lightbox feature
+  static function lightbox($atts, $content='') {
+    $attributes = array_merge(array(
+      'style' => 'display:none;',
+      'class' => ''
+    ), $atts);
+    if (get_option('sv_player_stage') == 'stable') {
+      $attributes['class'] = 'sublime lightbox';
+    }
+
+    $video = new SublimeVideoShortcodes($attributes);
+
+    return "<a class='sublime' href='#".$video->video_attributes['id']."'>".do_shortcode($content)."</a>".$video->generate_video_code();
+  }
+
 }
 
 // tell wordpress to register the sublimevideo shortcode
 add_shortcode('sublimevideo-lightbox', array('SublimeVideoShortcodes', 'lightbox'));
 
 // tell wordpress to register the sublimevideo shortcode
-add_shortcode('sublimevideo', array('SublimeVideoShortcodes', 'normal'));
+add_shortcode('sublimevideo', array('SublimeVideoShortcodes', 'video'));
 
 ?>
