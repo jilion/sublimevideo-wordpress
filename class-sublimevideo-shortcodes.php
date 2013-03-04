@@ -13,15 +13,18 @@ class SublimeVideoShortcodes {
     $i = 1;
     foreach (SublimeVideo::$formats as $format => $infos) {
       foreach ($infos[SublimeVideo::FORMAT_QUALITIES] as $quality) {
-        $source = $params[strtolower($format.'_'.$quality).'_source'];
-        $param_to_add = $params[$source.'_'.strtolower($format.'_'.$quality)];
-        if ($param_to_add != '') {
+        $origin = $params[strtolower($format.'_'.$quality).'_source'];
+        $source = $params[$origin.'_'.strtolower($format.'_'.$quality)];
+        if ($source != '') {
+          if (!isset($uid)) $uid = self::generateUID($source);
           $quality_prefix = !in_array(strtolower($quality), array('normal', 'mobile')) ? '('.strtolower($quality).')' : '';
-          $attributes[] = 'src'.$i.'="'.$quality_prefix.$param_to_add.'"';
+          $attributes[] = 'src'.$i.'="'.$quality_prefix.$source.'"';
         }
         $i++;
       }
     }
+    $attributes[] = 'uid="'.$uid.'"';
+    $attributes[] = 'id="'.$uid.'"';
 
     $dimensions = array( 'width', 'height' );
     foreach ($dimensions as $dimension) {
@@ -29,6 +32,10 @@ class SublimeVideoShortcodes {
     }
 
     return '['.$shortcode_base.' '.join(" ", $attributes).']';
+  }
+
+  static function generateUID($string) {
+    return dechex(crc32($string));
   }
 
   static function default_video_attributes() {
@@ -41,7 +48,6 @@ class SublimeVideoShortcodes {
       'poster'  => '',
       'preload' => 'none'
     );
-    if ($array['id'] == '') $array['id'] = "video".rand();
 
     return $array;
   }
@@ -100,6 +106,9 @@ class SublimeVideoShortcodes {
     $this->video_settings   = shortcode_atts(self::default_video_settings(), $attributes);
     $this->video_behaviors  = self::behaviors($attributes);
     $this->sources          = self::sources($attributes);
+
+    if ($this->video_attributes['id'] == '') $this->video_attributes['id'] = self::generateUID($this->sources[0]['src']);
+    if ($this->video_settings['uid'] == '') $this->video_settings['uid'] = $this->video_attributes['id'];
   }
 
   // function to process the shortcode
@@ -110,7 +119,7 @@ class SublimeVideoShortcodes {
   }
 
   public function generate_video_code() {
-    $html = "<video ".$this->write_video_attributes()." ".join(' ', $this->write_data_settings())." ".$this->video_behaviors.">\n";
+    $html = "<video ".$this->write_video_attributes()." ".$this->write_data_settings()." ".$this->video_behaviors.">\n";
     foreach ($this->sources as $source) {
       $data_quality = $source['quality'] != '' ? " data-quality='".$source['quality']."'" : '';
       $html .= "\t<source src='".$source['src']."'".$data_quality." />\n";
@@ -144,7 +153,7 @@ class SublimeVideoShortcodes {
       if ($data) $data_attributes[] = "data-".$data_attribute."='".$data."'";
     }
 
-    return join(" ", $data_attributes);
+    return join(' ', $data_attributes);
   }
 
   // Process the shortcode for the floating lightbox feature

@@ -39,9 +39,10 @@ Please find the full documentation (installation, usage, shortcode, troubleshoot
 == Changelog ==
 
 = Master =
-* Fixed a "Undefined property" warning visible in debug mode.
+* Unique DOM id are now generated for all new video elements.
+* Unique data-uid are now generated for all new video elements.
 * Allow nested shortcode for the "src" attributes.
-* The plugin now generates unique DOM id for video elements.
+* Fixed a "Undefined property" warning visible in debug mode.
 * Refactor the SublimeVideoShortcodes class.
 
 = 1.5.2 =
