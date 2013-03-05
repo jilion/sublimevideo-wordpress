@@ -46,6 +46,16 @@ Simply add `settings="autoresize:fit"` (or `settings="autoresize:fill"`) in your
 
 Learn more about the `autoresize` player settings in the [SublimeVideo documentation](http://docs.sublimevideo.net/settings/player-settings#autoresize).
 
+= How can I play a YouTube video with the SublimeVideo WordPress plugin? =
+
+Let's say you want to play the following video: https://www.youtube.com/watch?v=abcd1234
+
+Simply add `settings="youtube-id:abcd1234"` in your shortcode, as follow:
+
+`[sublimevideo src1="..." width="..." height="..." settings="youtube-id:abcd1234"]`
+
+Learn more about the `youtube-id` player settings in the [SublimeVideo documentation](http://docs.sublimevideo.net/settings/player-settings#youtube-id).
+
 == Changelog ==
 
 = 1.6.0 =
