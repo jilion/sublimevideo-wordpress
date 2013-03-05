@@ -2,7 +2,7 @@
 Contributors: sublimevideo
 Tags: html5, video, player, sublimevideo, horizon, framework
 Requires at least: 3.0
-Stable tag: 1.5.2
+Stable tag: 1.6.0
 Tested up to: 3.5.1
 
 SublimeVideo is the most reliable HTML5 Video Player on the Web. It allows your videos to play flawlessly on any device or browser and in any page.
@@ -48,10 +48,11 @@ Learn more about the `autoresize` player settings in the [SublimeVideo documenta
 
 == Changelog ==
 
-= Master =
+= 1.6.0 =
 * Unique DOM id are now generated for all new video elements.
 * Unique data-uid are now generated for all new video elements.
 * Allow nested shortcode for the "src" attributes.
+* Remove code that is not necessary anymore with the new SublimeVideo player.
 * Fixed a "Undefined property" warning visible in debug mode.
 * Refactor the SublimeVideoShortcodes class.
 
