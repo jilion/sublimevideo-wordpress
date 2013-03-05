@@ -13,47 +13,8 @@ class SublimeVideoFrontendActions {
     }
     echo '<script type="text/javascript" src="//cdn.sublimevideo.net/js/'.get_option('sv_site_token').$stage.'.js"></script>';
   }
-
-  // insert JavaScript before </body> to enable autoplay and/or loop feature using SublimeVideo's JS API
-  static function inject_javascript_integration() {
-    if ( (!is_admin() || is_preview()) && get_option('sv_player_stage') == 'stable' ) {
-      echo <<<_end_
-      <script type='text/javascript'>
-        sublimevideo.ready(function(){for(var c=document.getElementsByTagName("video"),a,d,e=[],b=0;b<c.length;b++)if(a=c[b].getAttribute("data-sublime-wp"),void 0!=a){a=a.split(/\s/);for(var f=0;f<a.length;f++)void 0==d&&-1!=a[f].indexOf("autoplay")&&(d=c[b]),-1!=a[f].indexOf("loop")&&e.push(c[b])}d&&sublimevideo.prepareAndPlay(d);if(0<e.length)sublimevideo.onEnd(function(a){for(var b=0;b<e.length;b++)e[b]==a.element&&sublimevideo.play(a.element)})});
-      </script>
-_end_;
-  // // http://closure-compiler.appspot.com/home
-  // <script type='text/javascript'>
-  //   sublimevideo.ready(function() {
-  //     var videos = document.getElementsByTagName('video'), settings, autoplayVideo, loopVideo = [];
-  //
-  //     for (var i = 0; i < videos.length; i++) {
-  //       settings = videos[i].getAttribute('data-sublime-wp');
-  //       if (settings != undefined) {
-  //         settings = settings.split(/\s/);
-  //         for (var j = 0; j < settings.length; j++) {
-  //           if (autoplayVideo == undefined && settings[j].indexOf('autoplay') != -1) autoplayVideo = videos[i];
-  //           if (settings[j].indexOf('loop') != -1) loopVideo.push(videos[i]);
-  //         }
-  //       }
-  //     };
-  //
-  //     if (autoplayVideo) sublimevideo.prepareAndPlay(autoplayVideo);
-  //
-  //     if (loopVideo.length > 0) {
-  //       sublimevideo.onEnd(function(sv){
-  //         for (var i = 0; i < loopVideo.length; i++) {
-  //           if (loopVideo[i] == sv.element) sublimevideo.play(sv.element);
-  //         }
-  //       });
-  //     }
-  //   });
-  // </script>
-    }
-  }
 }
 add_action('wp_head', array( 'SublimeVideoFrontendActions', 'inject_license' ));
-add_action('wp_footer', array( 'SublimeVideoFrontendActions', 'inject_javascript_integration' ));
 
 
 class SublimeVideoBackendActions {

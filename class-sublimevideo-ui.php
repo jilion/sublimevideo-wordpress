@@ -75,9 +75,11 @@ class SublimeVideoUI {
             // No sites is available on my.sublimevideo.net
             if ($api->code != 200) {
               echo $sublimevideo->t('api_issue');
-              echo "<p class='desc'>".sprintf($sublimevideo->t('site'), get_option('sv_site_domain'), strlen(get_option('sv_site_domain')))." ".sprintf($sublimevideo->t('view_site'), get_option('sv_site_token'))."</p>";
-              echo "<input type='hidden' name='sv_site_token' value='".get_option('sv_site_token')."' />";
-              echo "<input type='hidden' name='sv_site_domain' value='".get_option('sv_site_domain')."' />";
+              if (get_option('sv_site_token')) {
+                echo "<p class='desc'>".sprintf($sublimevideo->t('site'), get_option('sv_site_domain'), strlen(get_option('sv_site_domain')))." ".sprintf($sublimevideo->t('view_site'), get_option('sv_site_token'))."</p>";
+                echo "<input type='hidden' name='sv_site_token' value='".get_option('sv_site_token')."' />";
+                echo "<input type='hidden' name='sv_site_domain' value='".get_option('sv_site_domain')."' />";
+              }
             }
             elseif (empty($available_sites)) {
               echo sprintf($sublimevideo->t('no_sites'), $clean_http_host, $clean_http_host);
@@ -143,7 +145,6 @@ class SublimeVideoUI {
               ?>
             </select>
           </p>
-          <?php echo $sublimevideo->t('player_stage_note'); ?>
           <div class="breakline"></div>
           <p class="submit"><input type="submit" class="button-primary" value="Save changes" /></p>
         </form>

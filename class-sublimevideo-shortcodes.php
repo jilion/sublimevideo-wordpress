@@ -69,18 +69,13 @@ class SublimeVideoShortcodes {
 
     foreach (SublimeVideo::$allowed_behaviors as $behavior) {
       if (in_array($behavior, $attributes)) {
-        if (get_option('sv_player_stage') == 'stable') {
-          $behaviors[] = $behavior;
-        }
-        else {
-          switch ($behavior) {
-            case 'autoplay':
-              $data_attributes[] = "data-autoplay='true'";
-              break;
-            case 'loop':
-              $data_attributes[] = "data-on-end='replay'";
-              break;
-          }
+        switch ($behavior) {
+          case 'autoplay':
+            $data_attributes[] = "data-autoplay='true'";
+            break;
+          case 'loop':
+            $data_attributes[] = "data-on-end='replay'";
+            break;
         }
       }
     }
@@ -162,9 +157,6 @@ class SublimeVideoShortcodes {
       'style' => 'display:none;',
       'class' => ''
     ), $atts);
-    if (get_option('sv_player_stage') == 'stable') {
-      $attributes['class'] = 'sublime lightbox';
-    }
 
     $video = new SublimeVideoShortcodes($attributes);
 

@@ -33,8 +33,6 @@ class SublimeVideoLocales {
 
         'default_width_note' => "<p class='desc'>Note: This will default to the maximum width of your theme (you can also change it when adding a video to your post).</p>",
 
-        'player_stage_note' => "<p class='desc'>The <a href='http://sublimevideo.net/modular-player' onclick='window.open(this); return false'>New SublimeVideo Player</a> (beta) powered by <a href='http://sublimevideo.net/horizon-framework' onclick='window.open(this); return false'>SublimeVideo Horizon</a>.</p>",
-
         'more_information' => "<p class='desc'>For more information, please <a href='http://docs.sublimevideo.net/wordpress' onclick='window.open(this); return false'><strong>consult the documentation</strong></a> or <a href='http://sublimevideo.net/help' onclick='window.open(this); return false'><strong>ask for some help</strong></a>.</p>"
 
       )
