@@ -11,15 +11,15 @@ SublimeVideo is the most reliable HTML5 Video Player on the Web. It allows your 
 
 SublimeVideo is the most reliable, pain-free way to truly enable HTML5 Video on your site, and allows your videos to play flawlessly on any device or browser and in any existing web page.
 
-- The cloud model ensures SublimeVideo Player is always up-to-date and makes it quick and easy to use and add to your site.
-- Built-in support for video features including SD/HD switching, playlists and video lightboxes.
-- Integrated, Real-Time Statistics offer a comprehensive, universal overview of your site’s video traffic.
+- Built-in support for video features including [HD Switching](http://sublimevideo.net/modular-player#hd), [Playlists](http://sublimevideo.net/modular-player#playlist), [Lightboxes](http://sublimevideo.net/modular-player#lightbox), [Keyboard Control](http://sublimevideo.net/modular-player#keyboard) and [much more](http://sublimevideo.net/modular-player#player_features).
+- Many add-ons available such as [Your Custom Logo](http://sublimevideo.net/modular-player#on_video_logo), [Social Sharing](http://sublimevideo.net/modular-player#social_sharing), [Real-Time Statistics](http://sublimevideo.net/modular-player#real_time_stats), [Embed](http://sublimevideo.net/modular-player#embed) and [much more](http://sublimevideo.net/modular-player#player_features).
+- The [cloud model](http://sublimevideo.net/modular-player#service_features) ensures SublimeVideo Player is always up-to-date and makes it quick and easy to use and add to your site.
 
-You can sign up for a free and unlimited account at [http://sublimevideo.net](http://sublimevideo.net).
+[Sign up for a free and unlimited account now](http://sublimevideo.net/signup)!
 
 This plugin allows you to easily integrate SublimeVideo Player with your WordPress site. It provides an [easy-to-use visual editor](http://wordpress.org/extend/plugins/sublimevideo-official/screenshots) that will help you generate shortcodes for your videos.
 
-Please find the full documentation (installation, usage, shortcode, troubleshooting) at [http://docs.sublimevideo.net/wordpress](http://docs.sublimevideo.net/beta/wordpress).
+Please find the full documentation at [http://docs.sublimevideo.net/wordpress](http://docs.sublimevideo.net/beta/wordpress).
 
 == Installation ==
 
@@ -28,13 +28,23 @@ Please find the full documentation (installation, usage, shortcode, troubleshoot
 3. Go to the SublimeVideo plugin settings page and authorize the plugin to access some of your SublimeVideo data.
 4. Once the authorization is done, you will see your SublimeVideo sites listed in a select menu in the plugin settings page; you’ll have to choose the one matching the domain of your WordPress site. If you only have one site registered in your SublimeVideo account, it’ll be selected automatically.
 5. In the plugin setting page you can also set the default width for all the videos you will embed.
-6. Go to the post editor, you should see the new button next to the media icons (image, video, audio…) – the plugin’s installation is now complete. If you don’t see it, please refer to the Troubleshooting section at: [http://docs.sublimevideo.net/beta/wordpress#troubleshooting](http://docs.sublimevideo.net/wordpress#troubleshooting).
+6. Go to the post editor, you should see the new "SV" button next to the "Add Media" button – the plugin’s installation is now complete. If you don’t see it, please refer to the [Troubleshooting](http://docs.sublimevideo.net/wordpress#troubleshooting) section.
 
-Please find the full documentation (installation, usage, shortcode, troubleshooting) at [http://docs.sublimevideo.net/wordpress](http://docs.sublimevideo.net/beta/wordpress).
+Please find the full documentation at [http://docs.sublimevideo.net/wordpress](http://docs.sublimevideo.net/beta/wordpress).
 
 == Screenshots ==
 
 1. The plugin's video embed builder.
+
+== Frequently Asked Questions ==
+
+= My theme is responsive, how can I make my videos responsive too? =
+
+Simply add `settings="autoresize:fit"` (or `settings="autoresize:fill"`) in your shortcode, as follow:
+
+`[sublimevideo src1="..." width="..." height="..." settings="autoresize:fit"]`
+
+Learn more about the `autoresize` player settings in the [SublimeVideo documentation](http://docs.sublimevideo.net/settings/player-settings#autoresize).
 
 == Changelog ==
 
@@ -53,8 +63,8 @@ Please find the full documentation (installation, usage, shortcode, troubleshoot
 * Fixed issue: Added a missing file.
 
 = 1.5.0 =
-* Added support for the [New SublimeVideo Player](http://sublimevideo.net/modular-player) (beta) powered by [SublimeVideo Horizon](http://sublimevideo.net/horizon-framework).
-* Added support for the `uid`, `name` and `settings` attributes (mapping to `data-uid`, `data-name` and `data-settings` HTML attribute). See http://docs.sublimevideo.net/beta/settings/usage to learn more about these attributes.
+* Added support for the [New SublimeVideo Player](http://sublimevideo.net/modular-player).
+* Added support for the `uid`, `name` and `settings` attributes (mapping to `data-uid`, `data-name` and `data-settings` HTML attribute). See http://docs.sublimevideo.net/settings/usage to learn more about these attributes.
 * Improvement: From now on, when you deactivate the plugin, its settings are deleted.
 
 = 1.4.1 =
