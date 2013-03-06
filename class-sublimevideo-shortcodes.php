@@ -96,6 +96,25 @@ class SublimeVideoShortcodes {
     return $sources;
   }
 
+  // function to process the shortcode
+  static function video($attributes) {
+    $shortcode = new SublimeVideoShortcodes($attributes);
+
+    return $shortcode->generate_video_code();
+  }
+
+  // Process the shortcode for the floating lightbox feature
+  static function lightbox($atts, $content='') {
+    $attributes = array_merge(array(
+      'style' => 'display:none;',
+      'class' => '',
+      'lightbox_settings' => ''
+    ), $atts);
+    $video = new SublimeVideoShortcodes($attributes);
+
+    return "<a class='sublime' href='#".$video->video_attributes['id']."' data-settings='".$attributes['lightbox_settings']."'>".do_shortcode($content)."</a>".$video->generate_video_code();
+  }
+
   public function __construct($attributes=array()) {
     $this->video_attributes = shortcode_atts(self::default_video_attributes(), $attributes);
     $this->video_settings   = shortcode_atts(self::default_video_settings(), $attributes);
@@ -149,18 +168,6 @@ class SublimeVideoShortcodes {
     }
 
     return join(' ', $data_attributes);
-  }
-
-  // Process the shortcode for the floating lightbox feature
-  static function lightbox($atts, $content='') {
-    $attributes = array_merge(array(
-      'style' => 'display:none;',
-      'class' => ''
-    ), $atts);
-
-    $video = new SublimeVideoShortcodes($attributes);
-
-    return "<a class='sublime' href='#".$video->video_attributes['id']."'>".do_shortcode($content)."</a>".$video->generate_video_code();
   }
 
 }

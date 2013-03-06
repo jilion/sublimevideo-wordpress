@@ -58,6 +58,8 @@ Learn more about the `youtube-id` player settings in the [SublimeVideo documenta
 
 == Changelog ==
 
+= Master =
+* New `lightbox_settings` shortcode attribute to allow to pass [lightbox specific settings](http://docs.sublimevideo.net/settings/lightbox-settings).
 = 1.6.0 =
 * Unique DOM id are now generated for all new video elements.
 * Unique data-uid are now generated for all new video elements.
