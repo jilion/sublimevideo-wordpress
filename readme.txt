@@ -2,7 +2,7 @@
 Contributors: sublimevideo
 Tags: html5, video, player, sublimevideo, horizon, framework
 Requires at least: 3.0
-Stable tag: 1.6.0
+Stable tag: 1.7.0
 Tested up to: 3.5.1
 
 SublimeVideo is the most reliable HTML5 Video Player on the Web. It allows your videos to play flawlessly on any device or browser and in any page.
@@ -58,7 +58,7 @@ Learn more about the `youtube-id` player settings in the [SublimeVideo documenta
 
 == Changelog ==
 
-= Master =
+= 1.7.0 =
 * New `lightbox_settings` shortcode attribute to allow to pass [lightbox specific settings](http://docs.sublimevideo.net/settings/lightbox-settings).
 * When a `youtube-id` is set in the `settings` attribute, the `uid` is set to the YouTube video id.
 
