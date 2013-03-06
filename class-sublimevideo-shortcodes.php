@@ -121,15 +121,24 @@ class SublimeVideoShortcodes {
     $this->video_behaviors  = self::behaviors($attributes);
     $this->sources          = self::sources($attributes);
 
-    if ($this->video_attributes['id'] == '') $this->video_attributes['id'] = self::generateUID($this->sources[0]['src']);
-    if ($this->video_settings['uid'] == '') $this->video_settings['uid'] = $this->video_attributes['id'];
+    $this->generate_id();
+    $this->generate_uid();
   }
 
-  // function to process the shortcode
-  static function video($attributes) {
-    $shortcode = new SublimeVideoShortcodes($attributes);
+  public function generate_id() {
+    if ($this->video_attributes['id'] == '') {
+      if (preg_match('/youtube-id:([^;\s]+)/i', $this->video_settings['settings'], $matches)) {
+        $this->video_attributes['id'] = $matches[1];
+      } else if ($this->sources[0]) {
+        $this->video_attributes['id'] = self::generateUID($this->sources[0]['src']);
+      }
+    }
+  }
 
-    return $shortcode->generate_video_code();
+  public function generate_uid() {
+    if ($this->video_settings['uid'] == '' && $this->video_attributes['id'] != '') {
+      $this->video_settings['uid'] = $this->video_attributes['id'];
+    }
   }
 
   public function generate_video_code() {
