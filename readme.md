@@ -10,8 +10,8 @@ SublimeVideo is the most reliable, pain-free way to truly enable HTML5 Video on 
 
 [Sign up for a free and unlimited account now](http://sublimevideo.net/signup)!
 
-This plugin allows you to easily integrate SublimeVideo Player with your WordPress site. It provides an [easy-to-use visual editor](http://wordpress.org/extend/plugins/sublimevideo-official/screenshots) that will help you generate shortcodes for your videos.
+This plugin allows you to easily integrate SublimeVideo Player with your WordPress site. It provides an [easy-to-use visual editor](https://github.com/jilion/sublimevideo-wordpress/blob/master/screenshot-1.jpg) that will help you generate shortcodes for your videos.
 
 ## Documentation
 
-Please find the full documentation at [http://docs.sublimevideo.net/wordpress](http://docs.sublimevideo.net/beta/wordpress).
+Please find the full documentation at [http://docs.sublimevideo.net/wordpress](http://docs.sublimevideo.net/wordpress).
