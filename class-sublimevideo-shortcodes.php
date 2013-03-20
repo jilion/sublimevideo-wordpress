@@ -8,7 +8,9 @@ class SublimeVideoShortcodes {
   static function create_shortcode_from_params($params) {
     $shortcode_base = 'sublimevideo';
     $attributes     = array();
-    $attributes[]   = 'poster="'.$params[$params['poster_source'].'_poster_url'].'"';
+    if ($params[$params['poster_source'].'_poster_url']) {
+      $attributes[] = 'poster="'.$params[$params['poster_source'].'_poster_url'].'"';
+    }
 
     $i = 1;
     foreach (SublimeVideo::$formats as $format => $infos) {
@@ -23,13 +25,18 @@ class SublimeVideoShortcodes {
         $i++;
       }
     }
-    $attributes[] = 'uid="'.$uid.'"';
-    $attributes[] = 'id="'.$uid.'"';
-
-    $dimensions = array( 'width', 'height' );
-    foreach ($dimensions as $dimension) {
-      $attributes[] = $dimension.'="'.$params['final_'.$dimension].'"';
+    if (isset($uid)) $attributes[] = 'uid="'.$uid.'"';
+    if (isset($uid)) $attributes[] = 'id="'.$uid.'"';
+    if ($params['source_origin'] == 'youtube') {
+      $attributes[] = 'settings="youtube-id:'.$params['source_youtube_src'].'"';
     }
+
+    $dimensions = array('width' => 640, 'height' => 360);
+    foreach ($dimensions as $dimension => $default_size) {
+      $size = $params['final_'.$dimension] ? $params['final_'.$dimension] : $default_size;
+      $attributes[] = $dimension.'="'.$size.'"';
+    }
+    var_dump($attributes);
 
     return '['.$shortcode_base.' '.join(" ", $attributes).']';
   }
