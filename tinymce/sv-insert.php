@@ -124,7 +124,7 @@ else {
               <label for="source_youtube_src">Your YouTube video ID</label>
               <br />
               <input type="text" name="source_youtube_src" id="source_youtube_src" placeholder="YouTube video ID" />
-              <p class="desc"><a href="http://docs.sublimevideo.net/youtube" onclick='window.open(this); return false'>Where can I find the video ID?</a></p>
+              <p class="desc"><a href="http://docs.sublimevideo.net/youtube#additional-information" onclick='window.open(this); return false'>Where can I find the video ID?</a></p>
               <div class="dimensions">Embed size
                 <input id="final_width_youtube" name="final_width" class="text" type="text" value="480" size="4" maxlength="4" />
                  x
