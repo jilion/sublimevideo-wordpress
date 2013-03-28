@@ -227,6 +227,10 @@ p.external_url a {
   padding:0 0 20px 0;
 }
 
+#youtube {
+  padding:10px 0;
+}
+
 #sources h4.type {
   padding:10px 0;
   font-size:16px;
@@ -238,6 +242,12 @@ p.external_url a {
   color:#7f8ca9;
   font-weight:normal;
   -webkit-font-smoothing:subpixel-antialiased;
+}
+
+.radio {
+  font-size:14px;
+  font-weight:bold;
+  padding:10px 0 2px;
 }
 
 .checkbox {
@@ -255,7 +265,7 @@ p.external_url a {
   margin-left:10px;
 }
 
-#sources .dimensions {
+.dimensions {
   font-size:13px;
   padding:15px 0 5px;
 }
@@ -279,8 +289,7 @@ input[type=text] {
   box-shadow: inset rgba(0,0,0,0.2) 0 1px 10px, rgba(255,255,255,0.8) 0 1px 0;
 }
 
-
-#sources .dimensions input.text {
+.dimensions input.text {
   width:48px;
   height:26px;
   line-height:26px;
@@ -298,7 +307,7 @@ input[type=text] {
   box-shadow: inset rgba(0,0,0,0.2) 0 1px 10px, rgba(255,255,255,0.8) 0 1px 0;
 }
 
-#sources .dimensions input.checkbox {
+.dimensions input.checkbox {
   margin:0 0 0 10px;
 }
 
@@ -314,6 +323,11 @@ input[type=text] {
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
   border-radius: 6px;
+}
+
+#sources .mobile .no_assets, #sources .hd .no_assets {
+  padding:6px 10px;
+  margin:2px 5px 0 0;
 }
 
 #sources select {
@@ -334,11 +348,6 @@ input[type=text] {
 
 #live_preview_wrap {
   margin:10px 0 20px;
-/*  padding:5px 15px 15px;
-  background:rgba(0,0,0,0.1);
-  -moz-border-radius:6px;
-  -webkit-border-radius:6px;
-  border-radius:6px;*/
 }
 
 #live_preview_wrap h2 {

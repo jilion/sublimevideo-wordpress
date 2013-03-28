@@ -3,7 +3,7 @@ Contributors: sublimevideo
 Tags: html5, video, player, sublimevideo, horizon, framework
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 1.7.0
+Stable tag: 1.8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,7 +58,20 @@ Simply add `settings="youtube-id:abcd1234"` in your shortcode, as follow:
 
 Learn more about the `youtube-id` player settings in the [SublimeVideo documentation](http://docs.sublimevideo.net/settings/player-settings#youtube-id).
 
+= Why don't I see any site in the Settings page? =
+
+* It's probably because your WordPress site's domain is not properly registered in your [SublimeVideo](https://my.sublimevideo.net/sites) account. You may find other possible reasons for this problem in the [Troubleshooting](http://docs.sublimevideo.net/troubleshooting#not-properly-registered) page.
+* Another possibility is that you previously linked the plugin with another [SublimeVideo](https://my.sublimevideo.net/sites) account account. The easiest solution is to deactivate the plugin and re-activate it right away. Then follow the [Installation steps](http://docs.sublimevideo.net/wordpress#installation) (skipping the two first steps, obviously).
+
 == Changelog ==
+
+= 1.8.0 =
+* Add support for [YouTube](http://docs.sublimevideo.net/youtube) videos in the visual editor.
+* Add support for the [`title`](http://docs.sublimevideo.net/wordpress#shortcodes-attributes-video-metadata-settings) shortcode attribute.
+* Deprecate the [`data_name`](http://docs.sublimevideo.net/wordpress#shortcodes-attributes-video-metadata-settings) shortcode attribute.
+
+* Add support for YouTube videos in the visual editor.
+* Add support for the `title` shortcode attribute.
 
 = 1.7.0 =
 * New `lightbox_settings` shortcode attribute to allow to pass [lightbox specific settings](http://docs.sublimevideo.net/settings/lightbox-settings).
@@ -69,46 +82,46 @@ Learn more about the `youtube-id` player settings in the [SublimeVideo documenta
 * Unique data-uid are now generated for all new video elements.
 * Allow nested shortcode for the "src" attributes.
 * Remove code that is not necessary anymore with the new SublimeVideo player.
-* Fixed a "Undefined property" warning visible in debug mode.
+* Fix a "Undefined property" warning visible in debug mode.
 * Refactor the SublimeVideoShortcodes class.
 
 = 1.5.2 =
-* Fixed a warning visible in debug mode.
-* Fixed a button design issue.
+* Fix a warning visible in debug mode.
+* Fix a button design issue.
 
 = 1.5.1 =
-* Fixed issue: Added a missing file.
+* Fix issue: Added a missing file.
 
 = 1.5.0 =
-* Added support for the [New SublimeVideo Player](http://sublimevideo.net/modular-player).
-* Added support for the `uid`, `name` and `settings` attributes (mapping to `data-uid`, `data-name` and `data-settings` HTML attribute). See http://docs.sublimevideo.net/settings/usage to learn more about these attributes.
+* Add support for the [New SublimeVideo Player](http://sublimevideo.net/modular-player).
+* Add support for the `uid`, `name` and `settings` attributes (mapping to `data-uid`, `data-name` and `data-settings` HTML attribute). See http://docs.sublimevideo.net/settings/usage to learn more about these attributes.
 * Improvement: From now on, when you deactivate the plugin, its settings are deleted.
 
 = 1.4.1 =
-* Fixed an issue that was occuring for old PHP versions.
+* Fix an issue that was occuring for old PHP versions.
 
 = 1.4.0 =
-* Added support for the `data_settings` attribute (mapping to the `data-settings` HTML attribute).
+* Add support for the `data_settings` attribute (mapping to the `data-settings` HTML attribute).
 
 = 1.3.2 =
-* Fixed issue: Autoplay and loop features didn't work in IE < 9.
+* Fix issue: Autoplay and loop features didn't work in IE < 9.
 
 = 1.3.1 =
 * Update: The lightbox shortcode is now `[sublimevideo-lightbox][/sublimevideo-lightbox]`.
 
 = 1.3.0 =
-* Fixed issue: `src1` declared after `src2` was leading to a wrong sources' order in the generated code.
-* Added support for the floating lightbox feature in shortcode, see http://docs.sublimevideo.net/wordpress for usage.
+* Fix issue: `src1` declared after `src2` was leading to a wrong sources' order in the generated code.
+* Add support for the floating lightbox feature in shortcode, see http://docs.sublimevideo.net/wordpress for usage.
 
 = 1.2.1 =
-* Fixed issue: HD switch wasn't displayed in the live preview.
-* Added support for the `style` attribute in shortcode, see http://docs.sublimevideo.net/wordpress for usage.
+* Fix issue: HD switch wasn't displayed in the live preview.
+* Add support for the `style` attribute in shortcode, see http://docs.sublimevideo.net/wordpress for usage.
 
 = 1.2.0 =
-* Fixed issue: SSL certificate verification.
-* Fixed issue: Custom port was preventing the plugin from working properly.
-* Added support for the `data_uid` and `data_name` attributes (mapping to `data-uid` and `data-name` HTML attribute). See http://docs.sublimevideo.net/optimize-for-stats for details.
-* Added support for HD sources. See http://docs.sublimevideo.net/hd-switching for details.
+* Fix issue: SSL certificate verification.
+* Fix issue: Custom port was preventing the plugin from working properly.
+* Add support for the `data_uid` and `data_name` attributes (mapping to `data-uid` and `data-name` HTML attribute). See http://docs.sublimevideo.net/optimize-for-stats for details.
+* Add support for HD sources. See http://docs.sublimevideo.net/hd-switching for details.
 
 = 1.1.0 =
 * Update for the new API endpoint which is https://api.sublimevideo.net.
