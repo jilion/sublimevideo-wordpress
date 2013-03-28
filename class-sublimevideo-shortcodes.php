@@ -62,9 +62,9 @@ class SublimeVideoShortcodes {
   static function default_video_settings() {
     $array = array();
 
-    foreach (SublimeVideo::$allowed_data_attributes as $data_attribute) {
-      $array[$data_attribute] = '';
-      $array['data_'.$data_attribute] = '';
+    foreach (SublimeVideo::$allowed_data_attributes as $shortcode_attribute => $data_attribute) {
+      $array[$shortcode_attribute] = '';
+      $array['data_'.$shortcode_attribute] = '';
     }
 
     return $array;
@@ -172,15 +172,15 @@ class SublimeVideoShortcodes {
   function write_data_settings() {
     $data_attributes = array();
 
-    foreach (SublimeVideo::$allowed_data_attributes as $data_attribute) {
+    foreach (SublimeVideo::$allowed_data_attributes as $shortcode_attribute => $data_attribute) {
       $data = null;
-      if ($this->video_settings[$data_attribute] != '') {
-        $data = $this->video_settings[$data_attribute];
-      } else if ($this->video_settings['data_'.$data_attribute] != '') {
-        $data = $this->video_settings['data_'.$data_attribute];
+      if ($this->video_settings[$shortcode_attribute] != '') {
+        $data = $this->video_settings[$shortcode_attribute];
+      } else if ($this->video_settings['data_'.$shortcode_attribute] != '') {
+        $data = $this->video_settings['data_'.$shortcode_attribute];
       }
 
-      if ($data) $data_attributes[] = "data-".$data_attribute."='".$data."'";
+      if ($data) $data_attributes[] = $data_attribute."='".$data."'";
     }
 
     return join(' ', $data_attributes);
