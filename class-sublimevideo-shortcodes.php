@@ -8,7 +8,9 @@ class SublimeVideoShortcodes {
   static function create_shortcode_from_params($params) {
     $shortcode_base = 'sublimevideo';
     $attributes     = array();
-    $attributes[]   = 'poster="'.$params[$params['poster_source'].'_poster_url'].'"';
+    if ($params[$params['poster_source'].'_poster_url']) {
+      $attributes[] = 'poster="'.$params[$params['poster_source'].'_poster_url'].'"';
+    }
 
     $i = 1;
     foreach (SublimeVideo::$formats as $format => $infos) {
@@ -23,13 +25,18 @@ class SublimeVideoShortcodes {
         $i++;
       }
     }
-    $attributes[] = 'uid="'.$uid.'"';
-    $attributes[] = 'id="'.$uid.'"';
-
-    $dimensions = array( 'width', 'height' );
-    foreach ($dimensions as $dimension) {
-      $attributes[] = $dimension.'="'.$params['final_'.$dimension].'"';
+    if (isset($uid)) $attributes[] = 'uid="'.$uid.'"';
+    if (isset($uid)) $attributes[] = 'id="'.$uid.'"';
+    if ($params['source_origin'] == 'youtube') {
+      $attributes[] = 'settings="youtube-id:'.$params['source_youtube_src'].'"';
     }
+
+    $dimensions = array('width' => 640, 'height' => 360);
+    foreach ($dimensions as $dimension => $default_size) {
+      $size = $params['final_'.$dimension] ? $params['final_'.$dimension] : $default_size;
+      $attributes[] = $dimension.'="'.$size.'"';
+    }
+    var_dump($attributes);
 
     return '['.$shortcode_base.' '.join(" ", $attributes).']';
   }
@@ -55,9 +62,9 @@ class SublimeVideoShortcodes {
   static function default_video_settings() {
     $array = array();
 
-    foreach (SublimeVideo::$allowed_data_attributes as $data_attribute) {
-      $array[$data_attribute] = '';
-      $array['data_'.$data_attribute] = '';
+    foreach (SublimeVideo::$allowed_data_attributes as $shortcode_attribute => $data_attribute) {
+      $array[$shortcode_attribute] = '';
+      $array['data_'.$shortcode_attribute] = '';
     }
 
     return $array;
@@ -165,15 +172,15 @@ class SublimeVideoShortcodes {
   function write_data_settings() {
     $data_attributes = array();
 
-    foreach (SublimeVideo::$allowed_data_attributes as $data_attribute) {
+    foreach (SublimeVideo::$allowed_data_attributes as $shortcode_attribute => $data_attribute) {
       $data = null;
-      if ($this->video_settings[$data_attribute] != '') {
-        $data = $this->video_settings[$data_attribute];
-      } else if ($this->video_settings['data_'.$data_attribute] != '') {
-        $data = $this->video_settings['data_'.$data_attribute];
+      if ($this->video_settings[$shortcode_attribute] != '') {
+        $data = $this->video_settings[$shortcode_attribute];
+      } else if ($this->video_settings['data_'.$shortcode_attribute] != '') {
+        $data = $this->video_settings['data_'.$shortcode_attribute];
       }
 
-      if ($data) $data_attributes[] = "data-".$data_attribute."='".$data."'";
+      if ($data) $data_attributes[] = $data_attribute."='".$data."'";
     }
 
     return join(' ', $data_attributes);

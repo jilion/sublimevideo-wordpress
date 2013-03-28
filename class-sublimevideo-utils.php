@@ -97,21 +97,6 @@ class SublimeVideoUtils {
     return $html;
   }
 
-  static function input_text_for_final_dimensions() {
-    $html  = '<div id="final_dimensions" class="dimensions" style="display:none;">Embed size';
-    $html .= '<span id="original_dimensions"> (original is ';
-    $html .= '<span id="original_width"></span>';
-    $html .= ' x ';
-    $html .= '<span id="original_height"></span>';
-    $html .= ')</span>: ';
-    $html .= '<input id="final_width" name="final_width" class="text" type="text" value="" size="4" maxlength="4" />';
-    $html .= ' x ';
-    $html .= '<input id="final_height" name="final_height" class="text" type="text" value="" size="4" maxlength="4" />';
-    $html .= '<span id="keep_ratio_box"><input type="checkbox" id="keep_ratio" name="keep_ratio" value="1" class="checkbox" checked /> <label for="keep_ratio">Keep original ratio</label></span></div>';
-
-    return $html;
-  }
-
   // Misc stuff
   static function non_blank($value) {
     return '' != $value;
