@@ -70,9 +70,6 @@ Learn more about the `youtube-id` player settings in the [SublimeVideo documenta
 * Add support for the [`title`](http://docs.sublimevideo.net/wordpress#shortcodes-attributes-video-metadata-settings) shortcode attribute.
 * Deprecate the [`data_name`](http://docs.sublimevideo.net/wordpress#shortcodes-attributes-video-metadata-settings) shortcode attribute.
 
-* Add support for YouTube videos in the visual editor.
-* Add support for the `title` shortcode attribute.
-
 = 1.7.0 =
 * New `lightbox_settings` shortcode attribute to allow to pass [lightbox specific settings](http://docs.sublimevideo.net/settings/lightbox-settings).
 * When a `youtube-id` is set in the `settings` attribute, the `uid` is set to the YouTube video id.
