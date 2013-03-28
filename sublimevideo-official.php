@@ -33,7 +33,12 @@ class SublimeVideo {
   static $non_editable_settings  = array('sv_oauth_token');
 
   // Allowed data- attributes.
-  static $allowed_data_attributes = array('uid', 'name', 'settings');
+  static $allowed_data_attributes = array(
+    'uid'      => 'data-uid',
+    'title'    => 'title',
+    'name'     => 'title',
+    'settings' => 'data-settings'
+  );
 
   // Allowed "behaviors" (fired through the JS API).
   // These behaviors can be added in the shortcode without value, e.g.: [sublimevideo src1='' loop]
