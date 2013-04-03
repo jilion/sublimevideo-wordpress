@@ -4,7 +4,7 @@
 /**
  * @package TinyMCE
  * @author
- * @copyright Copyright © 2011 SublimeVideo
+ * @copyright Copyright © 2011-2013, Jilion SA
  */
 
 /** @ignore */
@@ -125,11 +125,6 @@ else {
               <br />
               <input type="text" name="source_youtube_src" id="source_youtube_src" placeholder="YouTube video ID" />
               <p class="desc"><a href="http://docs.sublimevideo.net/youtube#additional-information" onclick='window.open(this); return false'>Where can I find the video ID?</a></p>
-              <div class="dimensions">Embed size
-                <input id="final_width_youtube" name="final_width" class="text" type="text" value="480" size="4" maxlength="4" />
-                 x
-                <input id="final_height_youtube" name="final_height" class="text" type="text" value="270" size="4" maxlength="4" />
-              </div>
             </div>
 
             <ul id="sources">
@@ -164,17 +159,6 @@ else {
 
                     echo "<p class='external_url'><a href='#' id='toggle_".$format_quality."_source'>Or use an external URL</a></p>";
                     echo "<input type='hidden' name='".$format_quality."_source' id='".$format_quality."_source' value='internal' />";
-
-                    if ( $format == 'mp4' && $quality == 'Normal' ) { ?>
-                      <div id="final_dimensions" class="dimensions" style="display:none;">Embed size
-                        <span id="original_dimensions"> (original is<span id="original_width"></span> x <span id="original_height"></span>)</span>:
-                        <input id="final_width" name="final_width" class="text" type="text" value="" size="4" maxlength="4" />
-                         x
-                        <input id="final_height" name="final_height" class="text" type="text" value="" size="4" maxlength="4" />
-                        <span id="keep_ratio_box"><input type="checkbox" id="keep_ratio" name="keep_ratio" value="1" class="checkbox" checked /> <label for="keep_ratio">Keep original ratio</label></span>
-                      </div>
-                    <?php
-                    }
                   echo "</li>";
                 }
                 echo "</ul>";
@@ -182,6 +166,13 @@ else {
             }
             ?>
             </ul>
+
+            <div id="final_dimensions" class="dimensions" style="display:none;">Embed size<span id="original_dimensions"> (original is <span id="original_width"></span> x <span id="original_height"></span>)</span>:
+              <input id="final_width" name="final_width" class="text" type="text" value="" size="4" maxlength="4" />
+               x
+              <input id="final_height" name="final_height" class="text" type="text" value="" size="4" maxlength="4" />
+              <span id="keep_ratio_box"><input type="checkbox" id="keep_ratio" name="keep_ratio" value="1" class="checkbox" checked /> <label for="keep_ratio">Keep original ratio</label></span>
+            </div>
 
             <div id="live_preview_wrap" style="display:none">
               <h2>Live preview</h2>
