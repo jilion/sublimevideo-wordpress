@@ -36,7 +36,8 @@ Please find the full documentation at [http://docs.sublimevideo.net/wordpress](h
 
 == Screenshots ==
 
-1. The plugin's video embed builder.
+1. The plugin's easy-to-use visual editor with an internal source selected.
+2. The plugin's easy-to-use visual editor with a YouTube source selected.
 
 == Frequently Asked Questions ==
 
@@ -49,6 +50,10 @@ Simply add `settings="autoresize:fit"` (or `settings="autoresize:fill"`) in your
 Learn more about the `autoresize` player settings in the [SublimeVideo documentation](http://docs.sublimevideo.net/settings/player-settings#autoresize).
 
 = How can I play a YouTube video with the SublimeVideo WordPress plugin? =
+
+Since the version 1.8.0, you can use the visual editor to set your YouTube video.
+
+For older versions, or if you want to do it manually, please read the following instructions.
 
 Let's say you want to play the following video: https://www.youtube.com/watch?v=abcd1234
 
@@ -63,18 +68,23 @@ Learn more about the `youtube-id` player settings in the [SublimeVideo documenta
 * It's probably because your WordPress site's domain is not properly registered in your [SublimeVideo](https://my.sublimevideo.net/sites) account. You may find other possible reasons for this problem in the [Troubleshooting](http://docs.sublimevideo.net/troubleshooting#not-properly-registered) page.
 * Another possibility is that you previously linked the plugin with another [SublimeVideo](https://my.sublimevideo.net/sites) account account. The easiest solution is to deactivate the plugin and re-activate it right away. Then follow the [Installation steps](http://docs.sublimevideo.net/wordpress#installation) (skipping the two first steps, obviously).
 
+If you have any other issue, please visit our [Troubleshooting](http://docs.sublimevideo.net/troubleshooting#videos-wont-play) page.
+
 == Changelog ==
 
-= 1.8.0 =
+= 1.8.1 – April 3, 2013 =
+* Fix an issue with dimensions fields.
+
+= 1.8.0 – March 28, 2013 =
 * Add support for [YouTube](http://docs.sublimevideo.net/youtube) videos in the visual editor.
 * Add support for the [`title`](http://docs.sublimevideo.net/wordpress#shortcodes-attributes-video-metadata-settings) shortcode attribute.
 * Deprecate the [`data_name`](http://docs.sublimevideo.net/wordpress#shortcodes-attributes-video-metadata-settings) shortcode attribute.
 
-= 1.7.0 =
+= 1.7.0 – March 6, 2013 =
 * New `lightbox_settings` shortcode attribute to allow to pass [lightbox specific settings](http://docs.sublimevideo.net/settings/lightbox-settings).
 * When a `youtube-id` is set in the `settings` attribute, the `uid` is set to the YouTube video id.
 
-= 1.6.0 =
+= 1.6.0 – March 5, 2013 =
 * Unique DOM id are now generated for all new video elements.
 * Unique data-uid are now generated for all new video elements.
 * Allow nested shortcode for the "src" attributes.
@@ -82,46 +92,46 @@ Learn more about the `youtube-id` player settings in the [SublimeVideo documenta
 * Fix a "Undefined property" warning visible in debug mode.
 * Refactor the SublimeVideoShortcodes class.
 
-= 1.5.2 =
+= 1.5.2 – December 14, 2012 =
 * Fix a warning visible in debug mode.
 * Fix a button design issue.
 
-= 1.5.1 =
+= 1.5.1 – December 14, 2012 =
 * Fix issue: Added a missing file.
 
-= 1.5.0 =
+= 1.5.0 – December 14, 2012 =
 * Add support for the [New SublimeVideo Player](http://sublimevideo.net/modular-player).
 * Add support for the `uid`, `name` and `settings` attributes (mapping to `data-uid`, `data-name` and `data-settings` HTML attribute). See http://docs.sublimevideo.net/settings/usage to learn more about these attributes.
 * Improvement: From now on, when you deactivate the plugin, its settings are deleted.
 
-= 1.4.1 =
+= 1.4.1 – August 30, 2012 =
 * Fix an issue that was occuring for old PHP versions.
 
-= 1.4.0 =
+= 1.4.0 – August 30, 2012 =
 * Add support for the `data_settings` attribute (mapping to the `data-settings` HTML attribute).
 
-= 1.3.2 =
+= 1.3.2 – May 9, 2012 =
 * Fix issue: Autoplay and loop features didn't work in IE < 9.
 
-= 1.3.1 =
+= 1.3.1 – March 26, 2012 =
 * Update: The lightbox shortcode is now `[sublimevideo-lightbox][/sublimevideo-lightbox]`.
 
-= 1.3.0 =
+= 1.3.0 – March 26, 2012 =
 * Fix issue: `src1` declared after `src2` was leading to a wrong sources' order in the generated code.
 * Add support for the floating lightbox feature in shortcode, see http://docs.sublimevideo.net/wordpress for usage.
 
-= 1.2.1 =
+= 1.2.1 – January 5, 2012 =
 * Fix issue: HD switch wasn't displayed in the live preview.
 * Add support for the `style` attribute in shortcode, see http://docs.sublimevideo.net/wordpress for usage.
 
-= 1.2.0 =
+= 1.2.0 – December 2, 2011 =
 * Fix issue: SSL certificate verification.
 * Fix issue: Custom port was preventing the plugin from working properly.
 * Add support for the `data_uid` and `data_name` attributes (mapping to `data-uid` and `data-name` HTML attribute). See http://docs.sublimevideo.net/optimize-for-stats for details.
 * Add support for HD sources. See http://docs.sublimevideo.net/hd-switching for details.
 
-= 1.1.0 =
+= 1.1.0 – November 30, 2011 =
 * Update for the new API endpoint which is https://api.sublimevideo.net.
 
-= 1.0.0 =
+= 1.0.0 – September 20, 2011 =
 * Initial release.
