@@ -1,7 +1,4 @@
-document.observe("dom:loaded", function() {
-  // Load SublimeVideo JS API since no videos are in the DOM on page load
-  sublime.load()
-
+sublime.ready(function() {
   setupPosterOriginObservers()
   if (posterThumbs.length > 0) {
     setupPosterObservers();
@@ -27,6 +24,9 @@ document.observe("dom:loaded", function() {
   setupDimensionsObservers()
   setupKeepRatioObservers()
 });
+
+// Load SublimeVideo JS API since no videos are in the DOM on page load
+sublime.load()
 
 function updateLivePreview() {
   if ($('live_preview_video')) {
@@ -223,8 +223,8 @@ function setupSourceOriginObservers() {
       else {
         $('youtube').hide();
         $('sources').show();
+        updateLivePreview();
       }
-      updateLivePreview();
     });
   });
 

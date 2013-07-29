@@ -72,6 +72,9 @@ If you have any other issue, please visit our [Troubleshooting](http://docs.subl
 
 == Changelog ==
 
+= 1.8.2 – July 29, 2013 =
+* Fix a preview issue when using a YouTube source.
+
 = 1.8.1 – April 3, 2013 =
 * Fix an issue with dimensions fields.
 

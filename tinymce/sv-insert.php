@@ -32,6 +32,14 @@ else {
   <link rel="stylesheet" href="<?php echo SUBLIMEVIDEO_PLUGIN_URL; ?>tinymce/css/content.css" />
   <script type="text/javascript" src="<?php echo SUBLIMEVIDEO_PLUGIN_URL; ?>tinymce/js/prototype.js"></script>
   <script type="text/javascript" src="<?php echo SUBLIMEVIDEO_PLUGIN_URL; ?>tinymce/js/s2.js"></script>
+
+  <?php
+  $stage = '';
+  if (get_option('sv_player_stage') && get_option('sv_player_stage') != 'stable') {
+    $stage = '-'.get_option('sv_player_stage');
+  }
+  echo '<script type="text/javascript" src="//cdn.sublimevideo.net/js/'.get_option('sv_site_token').$stage.'.js"></script>';
+  ?>
   <script type="text/javascript" src="<?php echo SUBLIMEVIDEO_PLUGIN_URL; ?>tinymce/js/vpa.js"></script>
   <script type="text/javascript" src="<?php echo SUBLIMEVIDEO_PLUGIN_URL; ?>vendor/size-checker/sublimevideo-size-checker.min.js"></script>
   <script type="text/javascript">
@@ -44,12 +52,6 @@ else {
     var assetsBasePath = "<?php $upload_dir = wp_upload_dir(); echo $upload_dir['baseurl'] ?>";
   </script>
   <?php
-  $stage = '';
-  if (get_option('sv_player_stage') && get_option('sv_player_stage') != 'stable') {
-    $stage = '-'.get_option('sv_player_stage');
-  }
-  echo '<script type="text/javascript" src="//cdn.sublimevideo.net/js/'.get_option('sv_site_token').$stage.'.js"></script>';
-
   if ( is_rtl() ) : ?>
   <style type="text/css">
     #wphead, #tabs {

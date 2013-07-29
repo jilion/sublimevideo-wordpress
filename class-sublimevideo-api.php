@@ -31,7 +31,7 @@ class SublimeVideoAPI {
       get_option('sv_dev_oauth_consumer_key') ? get_option('sv_dev_oauth_consumer_key') : self::OAUTH_CONSUMER_KEY,
       get_option('sv_dev_oauth_consumer_secret') ? get_option('sv_dev_oauth_consumer_secret') : self::OAUTH_CONSUMER_SECRET, OAuth2Client::AUTH_TYPE_FORM
     );
-    $this->client->setAccessTokenType(OAuth2Client::ACCESS_TOKEN_OAUTH);
+    $this->client->setAccessTokenType(OAuth2Client::ACCESS_TOKEN_BEARER);
     $this->client->setAccessToken($this->oauth_token);
   }
 
